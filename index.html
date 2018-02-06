@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html style="font-size: 157.07px;">
+
+<head>
+  <meta name="data-fact" content="qianfan">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="multiple-page">
+  <meta name="onlinetime-on" chance="100">
+  <meta name="exposure-on">
+  <title> CCTV-5+ 体育赛事频道高清直播--cctv </title>
+  <script>      function setRem() { var baseWidth = 375; var curWidth = window.innerWidth; curWidth = Math.min(600, curWidth); var curBaseFs = (100 * curWidth / baseWidth).toFixed(2) + 'px'; document.querySelector('html').style.fontSize = curBaseFs; } setRem(); window.addEventListener('load', setRem); window.addEventListener('resize', setRem); function queryByInput(qtext) { document.getElementById("sContent").style.display = "none"; if (qtext.trim().length) { window.open("http://search.cctv.com/search.php?qtext=" + encodeURIComponent(qtext) + "&type=video", "_blank"); } } function checkSuggest(val) { }  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-size: 16px;
+    }
+
+    body,
+    div,
+    ul,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    input {
+      background-color: transparent;
+    }
+
+    .page_header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: .44rem;
+      color: #bbb;
+      font-size: .12rem;
+    }
+
+    .page_header a {
+      color: #bbb;
+    }
+
+    .logo {
+      flex: 1;
+    }
+
+    .logo img {
+      max-width: 100%;
+      max-height: .44rem;
+    }
+
+    .header_info {
+      flex: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .inputBox {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: .22rem;
+      border: 1px solid #eee;
+    }
+
+    .inputBox span {
+      display: inline-block;
+    }
+
+    .inputBox input {
+      border: none;
+      outline: none;
+      display: inline-block;
+      color: #bbb;
+      text-indent: 5px;
+    }
+
+    .inputBox input:focus {
+      color: #333;
+    }
+
+    .inputVal input[type='text'] {
+      width: 1.26rem;
+    }
+
+    .buttonVal {
+      position: absolute;
+      right: 0;
+      background-color: #fff;
+      background-image: url(http://p1.img.cctvpic.com/photoAlbum/templet/common/DEPA1367457523502574/buttonVal.jpg);
+      background-repeat: no-repeat;
+      height: .2rem;
+      padding-left: .02rem;
+      padding-right: .02rem;
+      background-position: center;
+      background-size: 12px 12px;
+    }
+
+    .buttonVal input {
+      border: none;
+      background-color: transparent;
+    }
+
+    .login_info {
+      padding-right: .07rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .login_info>span,
+    .login_info>a {
+      margin: 0 .05rem;
+    }
+
+    .header_nav {
+      height: .38rem;
+      background-image: linear-gradient(-180deg, #444652 0%, #5E6472 100%);
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+
+    .header_nav a {
+      display: inline-block;
+      font-size: 12px;
+      height: .38rem;
+      line-height: .38rem;
+      padding: 0 .18rem;
+      background-color: transparent;
+      color: #fff;
+      transition: all .2s;
+    }
+
+    .header_nav a:hover,
+    .header_nav a.cur {
+      background-image: linear-gradient(-180deg, #E52624 4%, #E42626 100%);
+    }
+
+    .video_layout {
+      position: relative;
+      width: 100vw;
+      padding: 27.8%;
+    }
+
+    .video_container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: #000;
+    }
+
+    .video_container .video_mask {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+    }
+
+    .video_container .video_mask.hide {
+      display: none;
+      opacity: 0;
+    }
+
+    .video_container .video_mask img {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    .video_container video {
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .video_cont {
+      width: 100%;
+      height: 100%;
+    }
+
+    .video_loadingimg {
+      display: none;
+    }
+
+    .section {
+      padding-left: .18rem;
+      padding-right: .18rem;
+    }
+
+    .section_title {
+      margin-top: .12rem;
+      margin-bottom: .1rem;
+      line-height: .27rem;
+      font-family: NotoSansCJKsc-Medium;
+      font-size: 18px;
+      color: #333333;
+      letter-spacing: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section_title .mh_option {
+      display: inline-block;
+      width: .5rem;
+      height: .24rem;
+      text-align: center;
+      line-height: .24rem;
+      font-size: 11px;
+      background-color: #f3f3f3;
+      border-radius: .18rem;
+    }
+
+    .section_title .mh_option a {
+      color: #333;
+    }
+
+    .section_title .mh_option a::after {
+      content: '';
+      display: inline-block;
+      margin-left: 2px;
+      width: 5px;
+      height: 5px;
+      border-top: 2px solid #333;
+      border-right: 2px solid #333;
+      transform: translateY(-1px) rotate(45deg);
+    }
+
+    .section_cont a {
+      color: inherit;
+    }
+
+    .section_cont .prog_list li {
+      display: flex;
+      justify-content: space-between;
+      background-color: #fff;
+      font-family: NotoSansCJKsc-Medium;
+      font-size: 11px;
+      line-height: .24rem;
+      color: #bbb;
+      padding-left: .1rem;
+      padding-right: .1rem;
+      letter-spacing: 0;
+      border-radius: 4px;
+    }
+
+    .section_cont .prog_list li:nth-of-type(2n+1) {
+      background-color: #eee;
+    }
+
+    .section_cont .prog_list li.cur {
+      color: #1D63B0;
+    }
+
+    .section_cont .prog_list li a .play_time {
+      display: inline-block;
+      width: 3em;
+    }
+
+    .section_cont .prog_list li .play_tip {
+      flex: 0 0 4em;
+      text-align: right;
+    }
+
+    .section_cont .cate_list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .section_cont .cate_list .img_item {
+      flex: 0 0 1.58rem;
+      margin-top: .07rem;
+      position: relative;
+    }
+
+    .section_cont .cate_list .img_item .img {
+      position: relative;
+      width: 100%;
+      padding-top: 56%;
+    }
+
+    .section_cont .cate_list .img_item .img>a {
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    .section_cont .cate_list .img_item .img .tp1 {
+      position: absolute;
+      right: 5px;
+      bottom: 5px;
+      font-family: Roboto-Bold;
+      font-size: 12px;
+      line-height: .18rem;
+      height: .18rem;
+      color: #FFFFFF;
+    }
+
+    .section_cont .cate_list .text {
+      height: .2rem;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 10em;
+      text-overflow: ellipsis;
+      line-height: .2rem;
+      margin-top: .05rem;
+      margin-bottom: .05rem;
+    }
+
+    .section_cont .cate_list .text a {
+      font-size: 14px;
+      line-height: .2rem;
+      color: #333333;
+      font-family: NotoSansCJKsc-Medium;
+    }
+
+    .section_cont .cate_list .img_item img {
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+    }
+
+    .footer {
+      margin-top: .2rem;
+      font-family: NotoSansCJKsc-Regular;
+      font-size: 10px;
+      line-height: 1.5;
+      color: #999999;
+    }
+
+    .footer::before {
+      content: '';
+      display: block;
+      height: 4px;
+      width: 100%;
+      background-color: #f6f6f6;
+      margin-bottom: 12px;
+    }
+
+    .footer .bottom_copyright {
+      margin-top: 10px;
+    }
+
+    .footer a {
+      color: inherit;
+    }
+
+    .footer .common-footer {
+      line-height: 17px;
+      font-size: 11px;
+      margin-top: .14rem;
+      margin-bottom: .18rem;
+    }
+
+    .footer>div {
+      padding: 0 40px;
+      text-align: center;
+    }
+
+    .footer .common-footer a {
+      font-family: NotoSansCJKsc-Regular;
+      margin-left: 5px;
+      color: #5eb3e8;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" data-fact="cctv">
+    <header class="page_header" id="fact-logo" data-fact-idx="1">
+      <div class="logo">
+        <a href="http://tv.cctv.com/">
+          <img src="http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2016/1/23/1453516866227_210.jpg" alt="央视网" title="央视网（www.cctv.com）由中央电视台主办，为国家重点新闻网站，是集新闻、信息、娱乐、服务为一体的具有视听互动特色的综合性门户网站。">
+        </a>
+      </div>
+      <div class="header_info">
+        <div class="inputBox">
+          <div class="inputVal">
+            <span class="val2">
+              <input type="text" name="qtext" id="mytxtdafdfasdf" class="input_txt2" value="大家都在搜" onfocus="if(this.value==this.defaultValue){this.value='';}"
+                onkeyup="checkSuggest(this.value)" autocomplete="off" disableautocomplete="">
+              <div class="sContent" id="sContent" style="display:none;"></div>
+            </span>
+          </div>
+          <span class="buttonVal">
+            <input type="button" onclick="queryByInput(document.getElementById('mytxtdafdfasdf').value);return false">
+            <input type="hidden" name="type" id="search_top_type" value="video">
+          </span>
+        </div>
+        <div class="login_info">
+          <a id="ccc" class="tn-tab" href="http://reg.cntv.cn/login.html?from=http://tv.cctv.com&amp;backurl=http://tv.cctv.com/live/cctv5plus/?btime=1517194002&amp;bauth=13c1a7e52f841ee137203c06384de001">登录</a>|
+          <span id="logout">
+            <a id="register_1" href="http://reg.cntv.cn/regist.html?from=http://tv.cctv.com&amp;backurl=http://tv.cctv.com/live/cctv5plus/?btime=1517194002&amp;bauth=13c1a7e52f841ee137203c06384de001"
+              target="_blank">注册</a>
+          </span>|
+          <a href="http://help.cntv.cn/" target="_blank">客服</a>
+        </div>
+      </div>
+    </header>
+    <nav class="header_nav" id="fact-topbar" data-fact-idx="2">
+      <a href="http://tv.cctv.com" class="">首页</a>
+      <a href="http://tv.cctv.com/live" class="cur">直播</a>
+      <a href="http://tv.cctv.com/epg" class="">节目单</a>
+      <a href="http://tv.cctv.com/ysyd" class="">央视悦动</a>
+      <a id="lmdq" href="http://tv.cctv.com/lm/" style="color: rgb(255, 255, 255);">栏目大全</a>
+    </nav>
+    <div class="section video_layout">
+      <div class="video_container" id="fact-player" data-fact-idx="3">
+        <div class="video_mask" id="video_mask">
+          <img id="playBtn" src="http://player.cntv.cn/images/ipad/playBtnH5.png" alt=""> </div>
+        <video id="html5Player" webkit-playsinline="" playsinline="" x-webkit-airplay="isHtml5UseAirPlay" preload="none"
+          src="http://cctvs.cntv.dnion.com/live/no/259_/seg0/index.m3u8?amode=1&amp;AUTH=cntv0006dkifrmvbGSsIte1WUG6DTlq0eJLCC+VZM33BAQlnnGZkdQbzCzC7QgMVjUXDcGQ7uoiDC96F+4uER7no5bNf38HnC/9yyQ==&amp;uid=default"
+          style="width:100%;height:100%" autoplay=""></video>
+      </div>
+    </div>
+    <div class="section prog_layout">
+      <div class="section_title"> 节目单 </div>
+      <div class="section_cont">
+        <ul class="prog_list" id="fact-proglist" data-fact-idx="4">
+          <li class="cur">
+            <a href!="">
+              <span class="play_time">10:30</span>
+              <span class="name">实况录像-2017/2018赛季中国男子篮球职…</span>
+            </a>
+            <span class="play_tip">正在直播</span>
+          </li>
+          <li>
+            <a href!="">
+              <span class="play_time">12:00</span>
+              <span class="name">赛事集锦(高清体育)-2018-38-2018年英超…</span>
+            </a>
+            <span class="play_tip">即将直播</span>
+          </li>
+          <li>
+            <a href!="">
+              <span class="play_time">12:30</span>
+              <span class="name">2017/2018赛季NHL-全明星技巧大赛</span>
+            </a>
+            <span class="play_tip">即将直播</span>
+          </li>
+          <li>
+            <a href!="">
+              <span class="play_time">14:00</span>
+              <span class="name">实况录像-2018年世界四大洲花样滑冰锦标…</span>
+            </a>
+            <span class="play_tip">即将直播</span>
+          </li>
+          <li>
+            <a href!="">
+              <span class="play_time">15:30</span>
+              <span class="name">国际足球赛场-17-18赛季德甲联赛第20轮 …</span>
+            </a>
+            <span class="play_tip">即将直播</span>
+          </li>
+          <li>
+            <a href!="">
+              <span class="play_time">17:00</span>
+              <span class="name">实况录像-2017/2018赛季雪车世界杯 德国…</span>
+            </a>
+            <span class="play_tip">即将直播</span>
+          </li>
+          <li>
+            <a href!="">
+              <span class="play_time">18:30</span>
+              <span class="name">实况录像-2017/2018赛季自由式滑雪世界…</span>
+            </a>
+            <span class="play_tip">即将直播</span>
+          </li>
+          <li>
+            <a href!="">
+              <span class="play_time">19:30</span>
+              <span class="name">实况录像-2018年澳大利亚网球公开赛 男…</span>
+            </a>
+            <span class="play_tip">即将直播</span>
+          </li>
+          <li>
+            <a href!="">
+              <span class="play_time">21:30</span>
+              <span class="name">2017/2018赛季NHL-全明星赛</span>
+            </a>
+            <span class="play_tip">即将直播</span>
+          </li>
+          <li>
+            <a href!="">
+              <span class="play_time">23:00</span>
+              <span class="name">实况录像-2017/2018赛季越野滑雪世界杯 …</span>
+            </a>
+            <span class="play_tip">即将直播</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="section cate_list" id="fact-hot" data-fact-idx="5">
+      <div class="md_hd section_title"> 热门推荐
+        <span class="mh_option">
+          <a href="http://sports.cctv.com/" target="_blank">更多</a>
+        </span>
+      </div>
+      <div class="section_cont">
+        <div class="cate_list">
+          <div class="img_item">
+            <div class="img">
+              <a href="http://mini.eastday.com/a/161226075429313.html?qid=yangshiwang" target="_blank">
+                <img src="http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2016/12/26/1482733705650_857.jpg" title="最权威！英媒评百大球星">
+              </a>
+
+            </div>
+            <div class="text">
+              <a href="http://mini.eastday.com/a/161226075429313.html?qid=yangshiwang">最权威！英媒评百大球星</a>
+            </div>
+          </div>
+          <div class="img_item">
+            <div class="img">
+              <a href="http://sports.cctv.com/nba/" target="_blank">
+                <img src="http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2016/11/18/1479461619502_208.jpg" title="NBA联赛">
+              </a>
+
+            </div>
+            <div class="text">
+              <a href="http://sports.cctv.com/nba/">NBA联赛</a>
+            </div>
+          </div>
+          <div class="img_item">
+            <div class="img">
+              <a href="http://sports.cctv.com/cba/" target="_blank">
+                <img src="http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2016/11/18/1479461141990_656.jpg" title="CBA联赛">
+              </a>
+
+            </div>
+            <div class="text">
+              <a href="http://sports.cctv.com/cba/">CBA联赛</a>
+            </div>
+          </div>
+          <div class="img_item">
+            <div class="img">
+              <a href="http://sports.cctv.com/special/championsleague/" target="_blank">
+                <img src="http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2016/11/18/1479461135487_111.jpg" title="欧洲冠军联赛">
+              </a>
+
+            </div>
+            <div class="text">
+              <a href="http://sports.cctv.com/special/championsleague/">欧洲冠军联赛</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="cntv_footer">
+        <div class="bottom_link">
+          <a href="http://www.cpolive.com/" target="_blank">中国爱乐乐团</a>|
+          <a href="http://www.citvc.com/" target="_blank">中国国际电视总公司</a>|
+          <a href="http://www.tv.cn/" target="_blank">中国电视网</a>|
+          <a href="http://cctvenchiridion.cctv.com/special/C22056/01/index.shtml" target="_blank">中广协会信息资料委员会</a>|
+          <a href="http://cctvenchiridion.cctv.com/special/C20540/01/index.shtml" target="_blank">中广协会电视文艺工作委员会</a>|
+          <a href="http://www.cndfilm.com/01/index.shtml" target="_blank">中央新闻纪录电影制片厂</a>
+        </div>
+        <div class="bottom_copyright">
+          <p>中国中央电视台 版权所有
+            <br>
+            <a href="http://www.miibeian.gov.cn/" target="_blank">京ICP证060535号</a>&nbsp;&nbsp;
+            <a>网络文化经营许可证文网文[2010]024号</a>
+            <br>
+            <a>网上传播视听节目许可证号 0102004 新出网证（京）字098号</a>
+            <a href="http://www.cctv.com/special/zlgy/zlgy/index.shtml" target="_blank">中国互联网视听节目服务自律公约</a>
+          </p>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="common-footer">
+        <p>您正在使用UC的转码服务
+          <a id="origin-url" href="">访问原网站</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+  <script id="factSdkLoader" src="https://image.uc.cn/s/uae/g/1a/fact/fact-sdkloader.js?v=2"></script>
+  <script>  (function autoTab() { var navParentEl = document.querySelector('#fact-topbar'); navParentEl.addEventListener('click', function (e) { if (e.target.tagName.toLowerCase() != 'a') return; var curLink = this.querySelector('a.cur'); e.target.classList.add('cur'); if (curLink) { curLink.classList.remove('cur'); } }, false) })(); if (window.sdkLoader) { sdkLoader(); } else { var sdkScript = document.querySelector('#factSdkLoader'); sdkScript.onload = function () { sdkLoader(); }; } function sendFactEvent(params) { if (window.factStat) { window.factStat.eventStat(params) } else { var q = (window.fact_stat_queue || (window.fact_stat_queue = [])); q.push({ action: 'eventStat', arguments: [params] }) } } function clickFactEvent(e) { var clkText = e.target.innerText; if (!this.id) return; var ckType = this.id.split('fact-')[1]; var ck_video = 0; if (ckType === 'player') { return; } if (ckType === 'proglist') { if (!e.target.classList.contains('name')) { return; } } if (ckType === 'hot') { if (e.target.tagName.toLowerCase() === 'img') { clkText = e.target.title; } } if (!clkText.length) return; var ckTypeMap = { hot: 4, proglist: 3, player: 2, topbar: 1, logo: 0, }; var params = { ev_ac: 'ck', ck_name: clkText, ck_type: ckTypeMap[ckType], ck_video: ck_video }; sendFactEvent(params); } function playerEvent(status) { var params = { ev_ac: 'ck', ck_name: '播放器', ck_type: 2, ck_video: status }; sendFactEvent(params); } function reloadThispage() { var videoEl = document.querySelector('video'); var reloadId = getSearchParams('reload-id') || 'videosrc9139620170120103557'; var curHref = location.href; var reloadUrl = curHref.replace(/(.+&x-tuna-id-x=)(.+$)/, function (mat, mat1, mat2) { return mat1 + reloadId; }); if (reloadUrl.match(/100./)) { reloadUrl = 'http://tuna.ucweb.local:8402/?x-tuna-url-x=http://tv.cctv.com/live/cctv5/&x-tuna-id-x=' + reloadId; } var xhr = new XMLHttpRequest(); xhr.open('GET', reloadUrl, true); xhr.onreadystatechange = function () { if (xhr.readyState === 4 && xhr.status === 200) { var newSrc = xhr.responseText; if (newSrc.match(/http.+m3u8./)) { var cloneVideo = videoEl.cloneNode(true); cloneVideo.src = newSrc; cloneVideo.controls = true; videoEl.parentElement.appendChild(cloneVideo); videoEl.parentElement.removeChild(videoEl); videoEl = null; initVideoEvent(); cloneVideo.play(); } } }; xhr.send(); } function removeClkBtn() { var mask = document.querySelector('') } function getSearchParams(key, url) { url = url || location.search; var hashIndex = url.indexOf('#'); var keyMatches = ''; if (hashIndex > 0) { url = url.substr(0, hashIndex); } keyMatches = url.match(new RegExp('[?|&]' + encodeURIComponent(key) + '=([^&]*)(&|$)')); if (keyMatches && keyMatches[1] === '%s') { return keyMatches[1]; } return keyMatches ? decodeURIComponent(keyMatches[1]) : null; } function insertFact() { if (getSearchParams('x-tuna-url-x')) { document.querySelector('#origin-url').href = getSearchParams('x-tuna-url-x'); } if (getSearchParams('cover')) { document.querySelector('video') && document.querySelector('video').setAttribute('poster', getSearchParams('cover')); } var factBVal = 'cctv'; var curTv = document.title.split('-')[0].trim(); var curProg = document.querySelector('.prog_list li.cur .name') && document.querySelector('.prog_list li.cur .name').innerText || ' '; var pvParams = { pg: factBVal, appid: '29f500a10362', ev_ct: 'tvtranslate', business: 'qianfan', name: curTv, program: curProg, }; if (window.factStat) { window.factStat.setCommonStatParams(pvParams); window.factStat.setStatA('translate'); window.factStat.setStatB(factBVal); window.factStat.sendPV(); window.factStat.eventStat({ ev_ac: 'visit' }); } else { var q = (window.fact_stat_queue || (window.fact_stat_queue = [])); q.push({ action: 'setCommonStatParams', arguments: [pvParams], }); q.push({ action: 'setStatA', arguments: 'translate' }, { action: 'setStatB', arguments: [factBVal] }, { action: 'sendPV', arguments: [] }); q.push({ action: 'eventStat', arguments: [{ ev_ac: 'visit' }] }); } var allFactEls = document.querySelectorAll('*[id^=fact-]'); var failTransNum = 0; Array.prototype.forEach.call(allFactEls, function (item, idx) { if (!item.childElementCount) { failTransNum++; var failIdx = item.getAttribute('data-fact-idx'); var failParams = { ev_ac: 'nosuccess', type: failIdx }; sendFactEvent(failParams); } item.addEventListener('click', clickFactEvent); }); if (failTransNum === 0) { sendFactEvent({ ev_ac: 'success', translate: 1 }); } else { sendFactEvent({ ev_ac: 'success', translate: 2 }); } var videoEl = document.querySelector('video'); initVideoEvent(); if (!videoEl) { sendFactEvent({ ev_ac: 'show', video: 0 }); return; } sendFactEvent({ ev_ac: 'show', video: 1 }); } var maskEl = document.querySelector('#video_mask'); maskEl.addEventListener('click', function (e) { e.stopPropagation(); maskEl.classList.add('hide'); var videoEl = document.querySelector('video'); if (navigator.userAgent.toLowerCase().indexOf("huawei") === -1) { videoEl.load(); } videoEl.play(); }); function initVideoEvent() { var maskEl = document.querySelector('#video_mask'); var videoEl = document.querySelector('video'); videoEl.onplay = function (e) { maskEl.classList.add('hide'); playerEvent(2); }; videoEl.onpause = function (e) { maskEl.classList.remove('hide'); playerEvent(1); }; videoEl.onended = function (e) { reloadThispage(); }; if (window.refreshVideoTimer) { clearTimeout(window.refreshVideoTimer); } window.refreshVideoTimer = setTimeout(function () { reloadThispage(); }, 3.5 * 60 * 1000); } window.addEventListener('load', insertFact);  </script>
+</body>
+
+</html>
